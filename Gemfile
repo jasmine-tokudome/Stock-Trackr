@@ -50,6 +50,12 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# LoadErrorに対処
+gem 'httparty'
+
+# OAuth2のクライアントライブラリをインストールする。
+gem 'oauth2'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -83,4 +89,3 @@ end
 group :production do
   gem "pg"
 end
-
