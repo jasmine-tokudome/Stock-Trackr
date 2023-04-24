@@ -37,3 +37,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# 隠しておきたいデータを定義した.envファイルを除外する
+/.env

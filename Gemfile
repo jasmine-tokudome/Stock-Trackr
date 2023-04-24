@@ -56,6 +56,9 @@ gem 'httparty'
 # OAuth2のクライアントライブラリをインストールする。
 gem 'oauth2'
 
+# 環境変数を管理する
+gem 'dotenv-rails'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
