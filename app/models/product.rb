@@ -15,10 +15,10 @@ class Product < ApplicationRecord
   base_uri 'https://api.shop-pro.jp/v1/shop.json'  # APIのエンドポイントを設定
 
   def self.get_data
-    uri = URI('https://api.shop-pro.jp/v1/shop.json')
+    uri = URI('https://api.shop-pro.jp/v1/products')
     request = Net::HTTP::Get.new(uri)
     request['Authorization'] = "Bearer #{ENV['colorme_access_token']}"
-    # response = get(base_uri)  # APIにGETリクエストを送信
+    response = get(uri)  # APIにGETリクエストを送信
     return JSON.parse(response.body)
   end
 
