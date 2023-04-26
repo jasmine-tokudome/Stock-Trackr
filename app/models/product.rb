@@ -19,6 +19,7 @@ class Product < ApplicationRecord
   end
 
   def self.set_product_data
+    @product = Product.new
     @product = self.get_api_data
   end
 end

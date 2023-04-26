@@ -5,8 +5,7 @@ require 'json'
 class ProductsController < ApplicationController
 
   def edit
-    Product.set_product_data
-    @product = Product.new
+    @product = Product.set_product_data
   end
 
 end
