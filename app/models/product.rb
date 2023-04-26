@@ -1,38 +1,19 @@
-# class Product
-#   include ActiveModel::Model
-#   include ActiveModel::Attributes
-
-#   attribute :id, :integer
-#   attribute :name, :string
-#   # attribute :unavailable_delivery_ids, :Array of integers
-#   attribute :error, :string, default: ''
-
-#   class << self
-#     def all
-#       ProductApi.search
-#     end
-#   end
-
-#   def has_error?
-#     status.to_s.match?(/^[45]/)
-#   end
-# end
-
 require 'net/http'
+require 'uri'
 require 'json'
 
-class Product < ApplicationRecord
- include HTTParty
-  base_uri 'https://api.shop-pro.jp/v1/shop.json'  # APIのエンドポイントを設定
-
-  def self.get_data
-    uri = URI('https://api.shop-pro.jp/v1/products')
+class MyModel < ApplicationRecord
+  def self.get_api_data()
+    url = 'https://api.shop-pro.jp'
+    uri = URI(url)
     request = Net::HTTP::Get.new(uri)
     request['Authorization'] = "Bearer #{ENV['colorme_access_token']}"
-    response = get(uri)  # APIにGETリクエストを送信
-    return JSON.parse(response.body)
+    request['Content-Type'] = 'application/json'
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
+      http.request(request)
+    end
+    data = JSON.parse(response.body)
+    # 取得したデータをハッシュに変換して返す
+    data.to_h
   end
-
 end
-
-

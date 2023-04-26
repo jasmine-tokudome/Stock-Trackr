@@ -1,20 +1,15 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
-
-<table class="product-table table">
+<table>
   <thead>
     <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>unavailable_delivery_ids</th>
+      <th>Key</th>
+      <th>Value</th>
     </tr>
   </thead>
   <tbody>
-    <% @products.each do |product| %>
+    <% @hash_data.each do |key, value| %>
       <tr>
-        <td><%= product.id %></td>
-        <td><%= product.name %></td>
-        <td><%= product.unavailable_delivery_ids %></td>
+        <td><%= key %></td>
+        <td><%= value %></td>
       </tr>
     <% end %>
   </tbody>
