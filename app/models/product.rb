@@ -7,6 +7,17 @@
 #   # attribute :unavailable_delivery_ids, :Array of integers
 #   attribute :error, :string, default: ''
 
+#   class << self
+#     def all
+#       ProductApi.search
+#     end
+#   end
+
+#   def has_error?
+#     status.to_s.match?(/^[45]/)
+#   end
+# end
+
 require 'net/http'
 require 'json'
 
@@ -22,15 +33,6 @@ class Product < ApplicationRecord
     return JSON.parse(response.body)
   end
 
-#   class << self
-#     def all
-#       ProductApi.search
-#     end
-#   end
-
-  def has_error?
-    status.to_s.match?(/^[45]/)
-  end
 end
 
 

@@ -2,7 +2,6 @@ require 'net/http'
 require 'json'
 
 class ProductsController < ApplicationController
-  before_action :set_oauth2_client
 
   def edit
     uri = URI('https://api.shop-pro.jp/v1/shop.json')
@@ -21,15 +20,4 @@ class ProductsController < ApplicationController
     # end
   end
 
-  private
-
-  def set_oauth2_client
-    client_id = ENV['colorme_client_id']
-    client_secret = ENV['colorme_client_secret']
-    # flow_type = ENV['colorme_code']
-    # authorize_url = https://api.shop-pro.jp/oauth/authorize
-    # token_url =  https://api.shop-pro.jp/oauth/token
-    # required_scopes = read_products
-    @client = OAuth2::Client.new(client_id, client_secret)
-  end
 end
