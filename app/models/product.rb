@@ -2,7 +2,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-class Product < ApplicationRecord
+class Product 
 
   def self.get_api_data
     url = 'https://api.shop-pro.jp/v1/shop.json'
