@@ -56,6 +56,9 @@ gem 'httparty'
 # OAuth2のクライアントライブラリをインストールする。
 gem 'oauth2'
 
+# OAuth認証のためのライブラリ
+gem 'omniauth'
+
 # 環境変数を管理する
 gem 'dotenv-rails'
 
