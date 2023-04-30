@@ -1,4 +1,7 @@
+<%= @product_count %>
+
 <table>
+
   <thead>
     <tr>
       <th>id</th>
@@ -9,7 +12,6 @@
     </tr>
   </thead>
   <tbody>
-   <%= @Numbers %>
     <% @products["products"].each do |product| %>
       <tr>
         <td><%= product["id"] %></td>
