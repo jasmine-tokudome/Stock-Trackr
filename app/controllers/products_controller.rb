@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def edit
     # @product_count = Product.count_products
-    @products_shipment = Product.product_id
+    @products_shipment = Product.get_product_id
   end
 
 end
