@@ -16,12 +16,12 @@ class Product
       http.request(request)
     end
     id_array = JSON.parse(response.body)
+    # 配列productsの値の数を抽出
     product_count = id_array["products"].length
     return product_count
   end
 
-
-  def self.get_api_data
+  def self.product_id
     url = 'https://api.shop-pro.jp/v1/products.json'
     uri = URI(url)
     request = Net::HTTP::Get.new(uri)
@@ -31,9 +31,24 @@ class Product
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
       http.request(request)
     end
-    product_index_data = JSON.parse(response.body)
+    json_data = JSON.parse(response.body)
+    id = json_data["id"]
     # 取得したデータをハッシュに変換して返す
-    product_index_data.to_h
   end
+
+  # def self.get_api_data
+  #   # url = 'https://api.shop-pro.jp/v1/products.json'
+  #   # uri = URI(url)
+  #   # request = Net::HTTP::Get.new(uri)
+  #   # request['Authorization'] = "Bearer #{ENV['colorme_access_token']}"
+  #   # request['Content-Type'] = 'application/json'
+  #   # request['scopes'] = 'read_products','write_products'
+  #   # response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
+  #   #   http.request(request)
+  #   # end
+  #   # product_index_data = JSON.parse(response.body)
+  #   # # 取得したデータをハッシュに変換して返す
+  #   # product_index_data.to_h
+  # end
 
 end

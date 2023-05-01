@@ -5,8 +5,8 @@ require 'json'
 class ProductsController < ApplicationController
 
   def edit
-    @product_count = Product.count_products
-    @products = Product.get_api_data
+    # @product_count = Product.count_products
+    @products_shipment = Product.product_id
   end
 
 end
