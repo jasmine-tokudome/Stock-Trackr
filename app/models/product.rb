@@ -59,7 +59,7 @@ class Product
     products[product_id] = product
   end
   return products
-  end
+end
 end
 
 
