@@ -62,6 +62,10 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  # precompileされるようにSprocketsに指示
+  config.assets.precompile += %w( product.js )
+  config.assets.debug = false
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

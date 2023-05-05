@@ -1,3 +1,12 @@
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- 既存のファイル読み込み -->
+  <%= javascript_include_tag 'application' %>
+  <!-- 作成したファイルを読み込む -->
+  <%= javascript_include_tag 'product' %>
+</head>
+
+
 
 <table>
   <thead>
@@ -7,14 +16,36 @@
       <th>Unavailable Delivery IDs</th>
     </tr>
   </thead>
-  <tbody>
-    <% @product_shipments.each do |key, value| %>
-      <tr>
-        <td><%= value["id"] %></td>
-        <td><%= value["name"] %></td>
-        <td><%= value["unavailable_delivery_ids"].join(", ") %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<%= form_with url: "/products" do |f| %>
+  <% @product_shipments.each do |key, value| %>
+    <tr>
+      <td><%= value["id"] %></td>
+      <td><%= value["name"] %></td>
+      <td>
+        <% delivery_methods = {} %>
+        <% @deliveries.each do |delivery| %>
+          <% delivery_methods[delivery['id']] = delivery['name'] %>
+        <% end %>
+        <% delivery_methods.each do |id, name| %>
+          <% if value["unavailable_delivery_ids"].include?(id) %>
+            <%= check_box_tag "product_shipment[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, true %>
+          <% else %>
+            <%= check_box_tag "product_shipment[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, false %>
+          <% end %>
+          <%= name %>
+          <br>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
+
+
+
+
+
+
+
+ 
 

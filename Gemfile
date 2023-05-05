@@ -62,6 +62,9 @@ gem 'omniauth'
 # 環境変数を管理する
 gem 'dotenv-rails'
 
+# JQueryを導入する
+gem 'jquery-rails'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

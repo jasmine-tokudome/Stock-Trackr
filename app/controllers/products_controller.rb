@@ -7,8 +7,8 @@ class ProductsController < ApplicationController
   def edit
     @product_id = Product.get_product_ids
     @product_shipments = Product.get_shipment
+    @deliveries = Product.get_deliveries
   end
-  # end
   
 end
 
