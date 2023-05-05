@@ -65,6 +65,9 @@ gem 'dotenv-rails'
 # JQueryを導入する
 gem 'jquery-rails'
 
+# デバックのためにpry-railを導入する
+gem 'pry-rails'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
