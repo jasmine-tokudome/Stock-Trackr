@@ -18,5 +18,13 @@ module SampleApp2
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # crossorigin 属性を use-credentials に設定する
+   config.action_dispatch.default_headers = {
+   'Access-Control-Allow-Origin' => 'ENV['Production']',
+   'Access-Control-Allow-Credentials' => 'true'
+   }
+
+
   end
 end
