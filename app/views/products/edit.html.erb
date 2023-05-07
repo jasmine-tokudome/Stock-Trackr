@@ -10,6 +10,7 @@
 
 <script>
   var productShipments = <%= @product_shipments.to_json.html_safe %>;
+  window.productID = <%= @product.id %>;
 </script>
 
 <table>
@@ -21,7 +22,7 @@
     </tr>
   </thead>
 
-<%= form_tag('/products/edit', method: :put) do %>
+<%= form_tag("/products/#{@product.id}", method: :put) %>
   <div id="product-shipments" data-product-shipments="<%= @product_shipments.to_json.html_safe %>">
     <!-- Product shipments content -->
     <% @product_shipments.each do |key, value| %>
