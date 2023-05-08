@@ -4,14 +4,14 @@
   <%= javascript_include_tag 'application' %>
   <!-- 作成したファイルを読み込む -->
   <%= javascript_include_tag 'product' %>
+  <script>
+   var productShipments = <%= @product_shipments.to_json.html_safe %>;
+   window.productID = <%= @product.id %>;
+  </script>
 </head>
 
 <p>jQuery稼働テスト(未稼働)</p>
 
-<script>
-  var productShipments = <%= @product_shipments.to_json.html_safe %>
-  window.productID = <%= @product.id %>;
-</script>
 
 <table>
   <thead>
