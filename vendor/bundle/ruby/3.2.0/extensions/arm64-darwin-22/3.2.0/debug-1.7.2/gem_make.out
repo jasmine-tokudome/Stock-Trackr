@@ -1,0 +1,19 @@
+current directory: /Users/tokudome/environment/SwitchShip2/vendor/bundle/ruby/3.2.0/gems/debug-1.7.2/ext/debug
+/Users/tokudome/.rbenv/versions/3.2.1/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/tokudome/environment/SwitchShip2/vendor/bundle/ruby/3.2.0/gems/debug-1.7.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230509-74555-9ts45l sitelibdir\=./.gem.20230509-74555-9ts45l clean
+
+current directory: /Users/tokudome/environment/SwitchShip2/vendor/bundle/ruby/3.2.0/gems/debug-1.7.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230509-74555-9ts45l sitelibdir\=./.gem.20230509-74555-9ts45l
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+
+current directory: /Users/tokudome/environment/SwitchShip2/vendor/bundle/ruby/3.2.0/gems/debug-1.7.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230509-74555-9ts45l sitelibdir\=./.gem.20230509-74555-9ts45l install
+/opt/homebrew/bin/ginstall -c -m 0755 debug.bundle ./.gem.20230509-74555-9ts45l/debug
+
+current directory: /Users/tokudome/environment/SwitchShip2/vendor/bundle/ruby/3.2.0/gems/debug-1.7.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230509-74555-9ts45l sitelibdir\=./.gem.20230509-74555-9ts45l clean

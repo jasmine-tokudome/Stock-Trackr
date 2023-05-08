@@ -62,9 +62,6 @@ gem 'omniauth'
 # 環境変数を管理する
 gem 'dotenv-rails'
 
-# JQueryを導入する
-gem 'jquery-rails'
-
 # デバックのためにpry-railを導入する
 gem 'pry-rails'
 
