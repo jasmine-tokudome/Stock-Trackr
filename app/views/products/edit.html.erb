@@ -1,17 +1,3 @@
-<head>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- 既存のファイル読み込み -->
-  <%= javascript_include_tag 'application' %>
-  <!-- 作成したファイルを読み込む -->
-  <%= javascript_include_tag 'product' %>
-  <script>
-   var productShipments = <%= @product_shipments.to_json.html_safe %>;
-   window.productID = <%= @product.id %>;
-  </script>
-</head>
-
-<p>jQuery稼働テスト(未稼働)</p>
-
 
 <table>
   <thead>
@@ -22,7 +8,6 @@
     </tr>
   </thead>
 
-  <%= form_tag("/products/#{@product.id}", method: :put) %>
    <div id="product-shipments" data-product-shipments="<%= @product_shipments.to_json.html_safe %>">
      <!-- Product shipments content -->
      <% @product_shipments.each do |key, value| %>
@@ -47,5 +32,4 @@
        </tr>
      <% end %>
    </div>
-  <% end %>
 </table>
