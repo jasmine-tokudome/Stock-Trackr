@@ -10,7 +10,8 @@
 
   <tbody>
     <%= form_tag url_for(controller: 'products', action: 'update'), method: :put do %>
-      <% @product_shipments.each do |key, value| %>
+      <%= fields_for :product_shipments do %>
+       <% @product_shipments.each do |key, value| %>
         <tr>
           <td><%= value["id"] %></td>
           <td><%= value["name"] %></td>
@@ -21,17 +22,18 @@
             <% end %>
             <% delivery_methods.each do |id, name| %>
               <% if value["unavailable_delivery_ids"].include?(id) %>
-                <%= check_box_tag "product_shipment[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, true %>
+                <%= check_box_tag "product_shipments[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, true %>
               <% else %>
-                <%= check_box_tag "product_shipment[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, false %>
+                <%= check_box_tag "product_shipments[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, false %>
               <% end %>
               <%= name %>
               <br>
             <% end %>
           </td>
-        </tr>
+         </tr>
+       <% end %>
       <% end %>
-      <%= submit_tag "Update" %>
+     <%= submit_tag "Update" %>
     <% end %>
   </tbody>
 </table>
