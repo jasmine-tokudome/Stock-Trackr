@@ -8,6 +8,7 @@
     </tr>
   </thead>
 
+  <%= form_tag url_for(controller: 'product_shipments', action: 'update'), method: :put do %>
    <div id="product-shipments" data-product-shipments="<%= @product_shipments.to_json.html_safe %>">
      <!-- Product shipments content -->
      <% @product_shipments.each do |key, value| %>
@@ -32,4 +33,5 @@
        </tr>
      <% end %>
    </div>
+   <%= submit_tag "Update" %>
 </table>
