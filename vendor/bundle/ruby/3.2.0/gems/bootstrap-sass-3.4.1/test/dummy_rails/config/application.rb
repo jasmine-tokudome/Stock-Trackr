@@ -11,7 +11,6 @@ require 'rails'
 end
 
 require 'slim-rails'
-require 'jquery-rails'
 require 'sassc-rails'
 require 'bootstrap-sass'
 require 'uglifier'
