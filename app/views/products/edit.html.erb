@@ -1,4 +1,3 @@
-
 <table>
   <thead>
     <tr>
@@ -8,30 +7,30 @@
     </tr>
   </thead>
 
-  <%= form_tag url_for(controller: 'product_shipments', action: 'update'), method: :put do %>
-   <div id="product-shipments" data-product-shipments="<%= @product_shipments.to_json.html_safe %>">
-     <!-- Product shipments content -->
-     <% @product_shipments.each do |key, value| %>
-       <tr>
-         <td><%= value["id"] %></td>
-         <td><%= value["name"] %></td>
-         <td>
-           <% delivery_methods = {} %>
-           <% @deliveries.each do |delivery| %>
-             <% delivery_methods[delivery['id']] = delivery['name'] %>
-           <% end %>
-           <% delivery_methods.each do |id, name| %>
-             <% if value["unavailable_delivery_ids"].include?(id) %>
-               <%= check_box_tag "product_shipment[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, true %>
-             <% else %>
-               <%= check_box_tag "product_shipment[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, false %>
-             <% end %>
-             <%= name %>
-             <br>
-           <% end %>
-         </td>
-       </tr>
-     <% end %>
-   </div>
-   <%= submit_tag "Update" %>
+  <tbody>
+    <%#= form_tag url_for(controller: 'product_shipments', action: 'update'), method: :put do %>
+      <% @product_shipments.each do |key, value| %>
+        <tr>
+          <td><%= value["id"] %></td>
+          <td><%= value["name"] %></td>
+          <td>
+            <% delivery_methods = {} %>
+            <% @deliveries.each do |delivery| %>
+              <% delivery_methods[delivery['id']] = delivery['name'] %>
+            <% end %>
+            <% delivery_methods.each do |id, name| %>
+              <% if value["unavailable_delivery_ids"].include?(id) %>
+                <%= check_box_tag "product_shipment[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, true %>
+              <% else %>
+                <%= check_box_tag "product_shipment[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, false %>
+              <% end %>
+              <%= name %>
+              <br>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <%= submit_tag "Update" %>
+    <%# end %>
+  </tbody>
 </table>
