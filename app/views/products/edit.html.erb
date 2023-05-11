@@ -1,39 +1,42 @@
-
 <table>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Unavailable Delivery IDs</th>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>在庫管理状態</th>
+      <th>在庫数</th>
+      <th>オプション設定有無</th>
+      <th>リンク</th>
     </tr>
   </thead>
-
   <tbody>
-    <%= form_tag url_for(controller: 'products', action: 'update'), method: :put do %>
-      <%= fields_for :product_shipments do %>
-       <% @product_shipments.each do |key, value| %>
-        <tr>
-          <td><%= value["id"] %></td>
-          <td><%= value["name"] %></td>
-          <td>
-            <% delivery_methods = {} %>
-            <% @deliveries.each do |delivery| %>
-              <% delivery_methods[delivery['id']] = delivery['name'] %>
+    <% @products_stocks.each do |key, value| %>
+      <tr>
+        <td><%= value["id"] %></td>
+        <td><%= value["name"] %></td>
+        <td><%= value["stock_managed"] ? "在庫管理する" : "在庫管理しない" %></td>
+        <% if value["stock_managed"] && !value["variants"].present? %>
+          <%= form_tag url_for(controller: 'products', action: 'update_stocks'), method: :put do %>
+            <td><%= text_field_tag "product[stocks][#{value['id']}]", value["stocks"], class: "stock-input" %>
+            <br>
+            <%= submit_tag "update" %></td>
+          <% end %>
+        <% elsif value["stock_managed"] %>
+          <td><%= value["stocks"] %></td>
+        <% else %>
+          <td>---</td>
+        <% end %>
+        <td>
+          <% if value.key?("variants") && value["variants"].present? %>
+            <% value["variants"].each do |variant| %>
+              <%= variant["title"] %>: <%= variant["stocks"] %><br>
             <% end %>
-            <% delivery_methods.each do |id, name| %>
-              <% if value["unavailable_delivery_ids"].include?(id) %>
-                <%= check_box_tag "product_shipments[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, true %>
-              <% else %>
-                <%= check_box_tag "product_shipments[product_shipment_details][#{value['id']}][unavailable_delivery_ids][]", id, false %>
-              <% end %>
-              <%= name %>
-              <br>
-            <% end %>
-          </td>
-         </tr>
-       <% end %>
-      <% end %>
-     <%= submit_tag "Update" %>
+          <% else %>
+            オプション設定なし
+          <% end %>
+        </td>
+        <td><%= link_to '商品編集', "https://admin.shop-pro.jp/?mode=product_edt&type=UPD&product_id=#{value['id']}", target: '_blank' %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
