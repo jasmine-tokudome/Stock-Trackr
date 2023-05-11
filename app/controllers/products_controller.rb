@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
 
   def update_stocks
   # products_stocks_paramsを使って、更新処理を実行する
-  products_stocks_params = params.require(:product).permit(stocks: {})
+  products_stocks_params = params.require(:product).permit(stocks: {}).to_h.symbolize_keys
   # 外部APIにPUTリクエストを送信するロジックを実装する
   products_stock_details = products_stocks_params[:stocks]
   products_stock_details.each do |id,stocks|
@@ -21,15 +21,14 @@ class ProductsController < ApplicationController
     url = "https://api.shop-pro.jp/v1/products/#{id}.json"
     uri = URI(url)
     http = Net::HTTP.new(uri.host, uri.port)
-    # http.use_ssl = true
-    # http.ssl_version = :TLSv1_3 # TLSv1.3を指定
+    http.use_ssl = true
     request = Net::HTTP::Put.new(uri)
     request['Authorization'] = "Bearer #{ENV['colorme_access_token']}"
     csrf_token = form_authenticity_token
     request['X-CSRF-Token'] = csrf_token
     request['Content-Type'] = 'application/json'
     request['scopes'] = 'write_products'
-    request.body = { product: { stocks: params[:product][:stocks] } }.to_json
+    request.body = { id: id, stocks: stocks }.to_json
     response = http.request(request)
     if response.present? && response.code.to_i == 200
       next
