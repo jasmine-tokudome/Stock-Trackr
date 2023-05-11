@@ -36,9 +36,7 @@ module SessionsHelper
 
   # ユーザーがログインしていればtrue、その他ならfalseを返す
   def logged_in?
-    # !current_user.nil?
-    # undefined method 'session_token' for nil:NilClass　に対処
-    current_user.present?
+    !current_user.nil?
   end
 
   # 永続的セッションを破棄する
