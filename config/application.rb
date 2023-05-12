@@ -25,5 +25,10 @@ module SampleApp2
    'Access-Control-Allow-Credentials' => 'true'
    }
 
+   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+   config.assets.paths << Rails.root.join('app', 'assets', 'images')
+   config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets')
+   config.assets.precompile += %w( custom.scss )
+
   end
 end
