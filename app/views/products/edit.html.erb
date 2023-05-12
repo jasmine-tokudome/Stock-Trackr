@@ -1,17 +1,12 @@
 <head>
-  <!-- custom.scssを適用させる -->
-  <%= stylesheet_link_tag 'custom' %>
+<%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
 </head>
-
-<body>
-<div class="row">
 
 <h1>Inventory Management</h1>
 <br>
 <br>
-
 <div class="inventory">
-<table >
+<table id: inventory_table>
   <thead>
     <tr>
       <th>商品ID</th>
@@ -54,5 +49,3 @@
   </tbody>
 </table>
 </div>
-</div>
-</body>
