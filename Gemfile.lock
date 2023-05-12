@@ -283,6 +283,7 @@ DEPENDENCIES
   capybara
   debug
   dotenv-rails
+  faraday
   httparty
   importmap-rails
   jbuilder

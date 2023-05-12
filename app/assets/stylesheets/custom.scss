@@ -251,3 +251,27 @@ input {
         border-bottom: 1px solid $gray-lighter;
     }
 }
+
+/* Inventory Management */
+
+.inventory {
+    table {
+        border-collapse: collapse;
+        width: 400px;
+        font-size: 12px;
+        margin: 20px;
+        text-align: left;
+
+        th {
+            color: black;
+            padding: 10px;
+            border-bottom: 3px solid #174a5c;
+        }
+
+        td {
+            padding: 10px;
+            color: gray;
+            border-bottom: 1px solid gray;
+        }
+    }
+}

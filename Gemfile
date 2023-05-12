@@ -65,6 +65,8 @@ gem 'dotenv-rails'
 # デバックのためにpry-railを導入する
 gem 'pry-rails'
 
+gem 'faraday'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

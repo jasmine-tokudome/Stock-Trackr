@@ -25,6 +25,8 @@ module SampleApp2
    'Access-Control-Allow-Credentials' => 'true'
    }
 
+  # アセットパイプラインを有効にする
+  config.assets.enabled = true
 
   end
 end

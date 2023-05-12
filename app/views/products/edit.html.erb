@@ -1,4 +1,17 @@
-<table>
+<head>
+  <!-- custom.scssを適用させる -->
+  <%= stylesheet_link_tag 'custom' %>
+</head>
+
+<body>
+<div class="row">
+
+<h1>Inventory Management</h1>
+<br>
+<br>
+
+<div class="inventory">
+<table >
   <thead>
     <tr>
       <th>商品ID</th>
@@ -40,3 +53,6 @@
     <% end %>
   </tbody>
 </table>
+</div>
+</div>
+</body>
