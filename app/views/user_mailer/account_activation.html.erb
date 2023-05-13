@@ -1,9 +1,10 @@
 <h1>Stock Trackr</h1>
 
-<p>Hi <%= @user.name %>,</p>
+<p>ようこそ <%= @user.name %> さま </p>
 
 <p>
-Welcome to the Stock Trackr! Click on the link below to activate your account:
+Stock Trackをご利用いただきありがとうございます。<br>
+ご本人様確認のため、以下のリンクをクリックしてください。<br>
 </p>
 
 <%= link_to "Activate", edit_account_activation_url(@user.activation_token,
