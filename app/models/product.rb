@@ -65,10 +65,10 @@ class Product
    product_ids = @product_ids 
    # product_idsがnilである場合、処理を終了する
    return if product_ids.nil?
-   #  商品情報のうち必要な3項目のみを取り出す（商品ID、商品名、在庫数、在庫管理するか否か、オプション設定の有無）
+   #  商品情報のうち必要な3項目のみを取り出す（商品ID、商品名、在庫数、在庫管理するか否か、残りわずかとなる在庫数,オプション設定の有無）
    products = {}
    product_ids.each do |product_id|
-    url = "https://api.shop-pro.jp/v1/products/#{product_id}.json?fields=id,name,stock_managed,stocks,variants"
+    url = "https://api.shop-pro.jp/v1/products/#{product_id}.json?fields=id,name,stock_managed,few_num,stocks,variants"
     uri = URI(url)
     request = Net::HTTP::Get.new(uri)
     request['Authorization'] = "Bearer #{ENV['colorme_access_token']}"
