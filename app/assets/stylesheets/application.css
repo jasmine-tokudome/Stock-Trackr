@@ -10,10 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *=require_self
  <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@100&display=swap');
  </style>
  *=require fontawesome-free-6.4.0-web/css/all
  *=require_tree .
- 
+ *=require_self
  */
