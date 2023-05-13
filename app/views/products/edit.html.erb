@@ -2,18 +2,20 @@
 <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
 </head>
 
-<h1>Inventory Management</h1>
+<body>
+<div class="row">
+<h1>Stock Trackr</h1>
 <br>
 <br>
 <div class="inventory">
-<table id: inventory_table>
+<table>
   <thead>
-    <tr>
+    <tr >
       <th>商品ID</th>
       <th>商品名</th>
-      <th>在庫管理状態</th>
+      <th>在庫管理</th>
       <th>在庫数</th>
-      <th>オプション設定有無</th>
+      <th>オプション設定</th>
       <th>リンク</th>
     </tr>
   </thead>
@@ -40,7 +42,7 @@
               <%= variant["title"] %>: <%= variant["stocks"] %><br>
             <% end %>
           <% else %>
-            オプション設定なし
+            オプション未設定
           <% end %>
         </td>
         <td><%= link_to '商品編集', "https://admin.shop-pro.jp/?mode=product_edt&type=UPD&product_id=#{value['id']}", target: '_blank' %></td>
@@ -49,3 +51,5 @@
   </tbody>
 </table>
 </div>
+</div>
+</body>

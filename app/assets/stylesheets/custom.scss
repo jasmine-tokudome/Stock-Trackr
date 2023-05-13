@@ -1,3 +1,5 @@
+/* application.scss */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -42,6 +44,7 @@ h4,
 h5,
 h6 {
     line-height: 1;
+    font-family: 'Raleway', sans-serif;
 }
 
 h1 {
@@ -72,6 +75,7 @@ p {
     float: left;
     margin-right: 10px;
     font-size: 1.7em;
+    font-family: 'Raleway', sans-serif;
     color: white;
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -255,54 +259,61 @@ input {
 /* Inventory Management */
 
 .inventory {
-    #inventory_table {
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-        }
 
-        table th:first-child {
-            border-radius: 5px 0 0 0;
-        }
+    table {
+        width: 1200px;
+        table-layout: auto;
+    }
 
-        table th:last-child {
-            border-radius: 0 5px 0 0;
-            border-right: 1px solid #3c6690;
-        }
+    table th {
+        position: relative;
+        text-align: left;
+    }
 
-        table th {
-            text-align: center;
-            color: white;
-            background: linear-gradient(#829ebc, #225588);
-            border-left: 1px solid #3c6690;
-            border-top: 1px solid #3c6690;
-            border-bottom: 1px solid #3c6690;
-            box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
-            width: 25%;
-            padding: 10px 0;
-        }
+    table th:after {
+        display: block;
+        content: "";
+        height: 2px;
+        background-color: #333;
+        position: absolute;
+        top: calc(50% - 1px);
+        right: -15px;
+    }
 
-        table td {
-            text-align: center;
-            border-left: 1px solid #a8b7c5;
-            border-bottom: 1px solid #a8b7c5;
-            border-top: none;
-            box-shadow: 0px -3px 5px 1px #eee inset;
-            width: 25%;
-            padding: 10px 0;
-        }
+    table td {
+        text-align: left;
+        padding: 7px 0 7px 30px;
+    }
 
-        table td:last-child {
-            border-right: 1px solid #a8b7c5;
-        }
+}
 
-        table tr:last-child td:first-child {
-            border-radius: 0 0 0 5px;
-        }
+/* Inventory Management */
 
-        table tr:last-child td:last-child {
-            border-radius: 0 0 5px 0;
-        }
+.inventory table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: #cdf4f0;
+
+    & tr:nth-child(2n+1) {
+        background: #e9faf9;
+    }
+
+    & th {
+        padding: 20px;
+        text-align: center;
+        width: 9em;
+        margin: 0 auto;
+        border: solid 1px #ffffff;
+        background: #778ca3;
+        color: #ffffff;
+    }
+
+    & td {
+        text-align: center;
+        width: 60em;
+        margin: 0 auto;
+        padding: 20px;
+        border: solid 1px #ffffff;
     }
 }

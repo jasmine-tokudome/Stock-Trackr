@@ -26,6 +26,9 @@ Rails.application.configure do
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
+ 
+  # Set `config.assets.digest` to true to enable asset fingerprinting.
+  config.assets.digest = true
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
@@ -89,9 +92,6 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  # precompileされるようにSprocketsに指示
-  config.assets.precompile += %w( product.js )
 
   # Use a different logger for distributed setups.
   # require "syslog/logger"
