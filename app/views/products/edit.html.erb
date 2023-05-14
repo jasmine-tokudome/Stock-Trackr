@@ -1,4 +1,5 @@
 <head>
+  <script src="https://kit.fontawesome.com/ded0e350fa.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
   <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
 </head>
@@ -42,11 +43,11 @@
         <td>
         <!-- 適正在庫数を下回っていた場合のみアイコンを表示させる -->
           <% if value["few_num"].present? && value["stocks"].present? && value["few_num"] <= value["stocks"] %>
-            <i class="fa-solid fa-clipboard-check" style="color:red;"></i>
-            </td>
+            <i class="fa-solid fa-cart-circle-exclamation" style="color:red;"></i>
           <% else %>
-          <td></td>
+            <%= " " %>
           <% end %>
+        </td>
         <td>
         <!-- オプション設定がある場合はオプションと各在庫数を表示させる -->
           <% if value.key?("variants") && value["variants"].present? %>
