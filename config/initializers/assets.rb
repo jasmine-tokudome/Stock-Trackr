@@ -11,5 +11,6 @@ Rails.application.config.assets.version = "1.0"
 # folder are already added.
 
 Rails.application.config.assets.precompile += %w( custom.scss )
-Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets', 'fonts')
+
+Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets')
 
