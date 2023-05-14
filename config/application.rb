@@ -25,7 +25,9 @@ module SampleApp2
    'Access-Control-Allow-Credentials' => 'true'
    }
 
-   config.assets.paths << Rails.root.join('app', 'assets', 'fonts','images','stylesheets')
+   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+   config.assets.paths << Rails.root.join('app', 'assets', 'images')
+   config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets')
    Rails.application.config.assets.precompile += %w( *.eot *.woff *.ttf *.svg *.otf *.png *.jpg *.jpeg *.gif vendor.css vendor.js )
 
   end

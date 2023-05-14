@@ -1,21 +1,20 @@
 <head>
-  <script src="https://kit.fontawesome.com/ded0e350fa.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
-  <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
 </head>
 
 <body>
 <div class="row">
 <h1>Stock Trackr</h1>
+<br>
+<br>
 <div class="inventory">
 <table>
   <thead>
-    <tr>
+    <tr >
       <th>商品ID</th>
       <th>商品名</th>
       <th>在庫管理</th>
       <th>在庫数</th>
-      <th>残りわずか</th>
       <th>オプション設定</th>
       <th>リンク</th>
     </tr>
@@ -26,43 +25,26 @@
         <td><%= value["id"] %></td>
         <td><%= value["name"] %></td>
         <td><%= value["stock_managed"] ? "在庫管理する" : "在庫管理しない" %></td>
-          <!-- 「在庫管理する」かつ「オプション設定なし」の場合には在庫数を変更できるフォームを表示させる -->
-          <% if value["stock_managed"] && !value["variants"].present? %>
-          <td><%= form_tag url_for(controller: 'products', action: 'update_stocks'), method: :put do %>
-            <%= text_field_tag "product[stocks][#{value['id']}]", value["stocks"], class: "stock-input" %>
+        <% if value["stock_managed"] && !value["variants"].present? %>
+          <%= form_tag url_for(controller: 'products', action: 'update_stocks'), method: :put do %>
+            <td><%= text_field_tag "product[stocks][#{value['id']}]", value["stocks"], class: "stock-input" %>
             <br>
             <%= submit_tag "update" %></td>
-            <% end %>
-          <!-- 「在庫管理する」かつ「オプション設定あり」の場合は在庫数は自動計算される。在庫数のみ表示させる。 -->
-          <% elsif value["stock_managed"] %>
+          <% end %>
+        <% elsif value["stock_managed"] %>
           <td><%= value["stocks"] %></td>
-          <% else %>
-          <!-- 「在庫管理しない」設定の場合は在庫数も非表示 -->
-            <td></td>
-          <% end %>
+        <% else %>
+          <td>---</td>
+        <% end %>
         <td>
-        <!-- 適正在庫数を下回っていた場合のみアイコンを表示させる -->
-          <% if value["few_num"].present? && value["stocks"].present? && value["few_num"] <= value["stocks"] %>
-            <i class="fa-solid fa-cart-circle-exclamation" style="color:red;"></i>
-          <% else %>
-            <%= " " %>
-          <% end %>
-        </td>
-        <td>
-        <!-- オプション設定がある場合はオプションと各在庫数を表示させる -->
           <% if value.key?("variants") && value["variants"].present? %>
             <% value["variants"].each do |variant| %>
-              <% if !variant["stocks"].present? %>
-               <%= variant["title"] %>
-              <% else %>
-               <%= variant["title"] %>  :  <%= variant["stocks"] %>
-              <% end %><br>
+              <%= variant["title"] %>: <%= variant["stocks"] %><br>
             <% end %>
           <% else %>
-            <%= "オプション未設定" %>
+            オプション未設定
           <% end %>
         </td>
-        <!-- 変更がようにできるよう該当商品の商品編集画面へのリンクを設置 -->
         <td><%= link_to '商品編集', "https://admin.shop-pro.jp/?mode=product_edt&type=UPD&product_id=#{value['id']}", target: '_blank' %></td>
       </tr>
     <% end %>
