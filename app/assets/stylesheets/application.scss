@@ -11,8 +11,9 @@
  * It is generally better to create a new file per style scope.
  *
  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@100&display=swap');
- @import 'font_awesome5_webfont';
- @import 'font_awesome5.css';
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+ @import '~@fortawesome/fontawesome-free/scss/fontawesome';
  @import "tree";
  @import "self";
  */

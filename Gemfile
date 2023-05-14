@@ -68,7 +68,7 @@ gem 'pry-rails'
 gem 'faraday'
 
 # font-awesome 導入
-gem 'font_awesome5_rails'
+gem 'font-awesome-sass'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

@@ -40,11 +40,12 @@
           <% end %>
         <td>
         <!-- 適正在庫数を下回っていた場合のみアイコンを表示させる -->
-          <% if value["few_num"].present? && value["stocks"].present? && value["stocks"] <= value["few_num"] %>
-            <p class="icon"><i class="fa-solid fa-clipboard-check fa-2x" style="color: #778ca3;"></i></p>
+          <% if value["few_num"].present? && value["stocks"].present? && value["few_num"] <= value["stocks"] %>
+            <i class="fa-solid fa-clipboard-check" style="color:red;"></i>
+            </td>
           <% else %>
+          <td></td>
           <% end %>
-          </td>
         <td>
         <!-- オプション設定がある場合はオプションと各在庫数を表示させる -->
           <% if value.key?("variants") && value["variants"].present? %>
@@ -52,7 +53,7 @@
               <% if !variant["stocks"].present? %>
                <%= variant["title"] %>
               <% else %>
-               <%= variant["title"] %>  (  <%=  variant["stocks"]  %> )
+               <%= variant["title"] %>  :  <%= variant["stocks"] %>
               <% end %><br>
             <% end %>
           <% else %>
