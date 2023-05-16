@@ -68,7 +68,7 @@ class Product
    #  商品情報のうち必要な3項目のみを取り出す（商品ID、商品名、在庫数、在庫管理するか否か、オプション設定の有無）
    products = {}
    product_ids.each do |product_id|
-    url = "https://api.shop-pro.jp/v1/products/#{product_id}.json?fields=id,name,stock_managed,stocks,variants"
+    url = "https://api.shop-pro.jp/v1/products/#{product_id}.json?fields=id,name,stock_managed,stocks,variants,few_num"
     uri = URI(url)
     request = Net::HTTP::Get.new(uri)
     request['Authorization'] = "Bearer #{ENV['colorme_access_token']}"
