@@ -4,7 +4,8 @@ require 'faraday'
 require 'json'
 
 class ProductsController < ApplicationController
-  # before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  protect_from_forgery except: :update_stocks
 
   def edit
     @product_id = Product.get_product_ids
@@ -24,14 +25,14 @@ class ProductsController < ApplicationController
     conn = Faraday.new(url: url) do |faraday|
       faraday.headers = {
         'Authorization' => "Bearer #{ENV['colorme_access_token']}",
-        'X-CSRF-Token' => form_authenticity_token,
+        # 'X-CSRF-Token' => form_authenticity_token,
         'Content-Type' => 'application/json',
         'scopes' => 'write_products'
       }
       faraday.adapter Faraday.default_adapter
     end
     response = conn.put do |req|
-      req.body = { stocks: stock }.to_json
+      req.body = { product: { stocks: stock.to_i } }.to_json
     end
     if response.present? && response.status == 200
       next
