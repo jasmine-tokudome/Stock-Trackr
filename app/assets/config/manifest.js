@@ -1,4 +1,6 @@
-//= link_tree ../images
+//= link custom.scss
 //= link_directory ../stylesheets .css
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
+//= link_tree ../images
+//= link application.css
