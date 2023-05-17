@@ -55,7 +55,7 @@
             <%= "オプション未設定" %>
           <% end %>
         </td>
-        <%# 変更がようにできるよう該当商品の商品編集画面へのリンクを設置 %>
+        <%# 変更が容易にできるよう該当商品の商品編集画面へのリンクを設置 %>
         <td><%= link_to '商品編集', "https://admin.shop-pro.jp/?mode=product_edt&type=UPD&product_id=#{value['id']}", target: '_blank' %></td>
       </tr>
     <% end %>
