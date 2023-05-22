@@ -8,13 +8,13 @@ default: &default
 
 development:
   <<: *default
-  database: SampleApp2_development
+  database: switchship2_development
 
 test:
   <<: *default
-  database: SampleApp2_test
+  database: switchship2_test
 
 production:
   <<: *default
-  database: SampleApp2_production
+  database: switchship2_production
   url: <%= ENV['DATABASE_URL'] %>

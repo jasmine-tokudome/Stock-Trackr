@@ -1,0 +1,65 @@
+<div class="row">
+<h1>Stock Trackr</h1>
+<div class="inventory">
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>在庫管理</th>
+      <th>在庫数</th>
+      <th>残りわずか</th>
+      <th>オプション設定</th>
+      <th>リンク</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products_stocks.each do |key, value| %>
+      <tr>
+        <td><%= value["id"] %></td>
+        <td><%= value["name"] %></td>
+        <td><%= value["stock_managed"] ? "在庫管理する" : "在庫管理しない" %></td>
+          <%# 「在庫管理する」かつ「オプション設定なし」の場合には在庫数を変更できるフォームを表示させる %>
+          <% if value["stock_managed"] && !value["variants"].present? %>
+          <td><%= form_tag url_for(controller: 'products', action: 'update_stocks'), method: :put do %>
+            <%= text_field_tag "product[stocks][#{value['id']}]", value["stocks"], class: "stock-input" %>
+            <br>
+            <%= submit_tag "update" %></td>
+            <% end %>
+          <%# 「在庫管理する」かつ「オプション設定あり」の場合は在庫数は自動計算される。在庫数のみ表示させる。 %>
+          <% elsif value["stock_managed"] %>
+          <td><%= value["stocks"] %></td>
+          <% else %>
+          <%# 「在庫管理しない」設定の場合は在庫数も非表示 %>
+            <td></td>
+          <% end %>
+        <td>
+        <%# 適正在庫数を下回っていた場合のみアイコンを表示させる %>
+          <% if value["few_num"].present? && value["stocks"].present? && value["stocks"] <= value["few_num"] %>
+            <% "在庫数残りわずか" %>
+             <p class="icon"><i class="fa-solid fa-clipboard-check fa-2x" style="color: #778ca3;"></i></p>
+          <% else %>
+          <% end %>
+          </td>
+        <td>
+        <%# オプション設定がある場合はオプションと各在庫数を表示させる %>
+          <% if value.key?("variants") && value["variants"].present? %>
+            <% value["variants"].each do |variant| %>
+              <% if !variant["stocks"].present? %>
+               <%= variant["title"] %>
+              <% else %>
+               <%= variant["title"] %>  (  <%=  variant["stocks"]  %> )
+              <% end %><br>
+            <% end %>
+          <% else %>
+            <%= "オプション未設定" %>
+          <% end %>
+        </td>
+        <%# 変更が容易にできるよう該当商品の商品編集画面へのリンクを設置 %>
+        <td><%= link_to '商品編集', "https://admin.shop-pro.jp/?mode=product_edt&type=UPD&product_id=#{value['id']}", target: '_blank' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>

@@ -1,0 +1,18 @@
+current directory: /Users/tokudome/environment/SwitchShip2/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/tokudome/.rbenv/versions/3.2.1/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/tokudome/environment/SwitchShip2/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20230509-74555-fnbzig sitelibdir\=./.gem.20230509-74555-fnbzig clean
+
+current directory: /Users/tokudome/environment/SwitchShip2/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20230509-74555-fnbzig sitelibdir\=./.gem.20230509-74555-fnbzig
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/tokudome/environment/SwitchShip2/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20230509-74555-fnbzig sitelibdir\=./.gem.20230509-74555-fnbzig install
+/opt/homebrew/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20230509-74555-fnbzig/skiptrace/internal
+
+current directory: /Users/tokudome/environment/SwitchShip2/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20230509-74555-fnbzig sitelibdir\=./.gem.20230509-74555-fnbzig clean

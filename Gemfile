@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.2.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4", ">= 7.0.4.2"
+gem "rails"
 
 gem "bootstrap-sass"
 
@@ -56,8 +56,19 @@ gem 'httparty'
 # OAuth2のクライアントライブラリをインストールする。
 gem 'oauth2'
 
+# OAuth認証のためのライブラリ
+gem 'omniauth'
+
 # 環境変数を管理する
 gem 'dotenv-rails'
+
+# デバックのためにpry-railを導入する
+gem 'pry-rails'
+
+gem 'faraday'
+
+# font-awesome 導入
+gem 'font_awesome5_rails'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

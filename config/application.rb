@@ -18,5 +18,15 @@ module SampleApp2
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # crossorigin 属性を use-credentials に設定する
+   config.action_dispatch.default_headers = {
+   'Access-Control-Allow-Origin' => 'ENV["Production"]',
+   'Access-Control-Allow-Credentials' => 'true'
+   }
+
+   config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets','fonts','images')
+   Rails.application.config.assets.precompile += %w( *.eot *.woff *.ttf *.svg *.otf *.png *.jpg *.jpeg *.gif vendor.css vendor.js )
+
   end
 end

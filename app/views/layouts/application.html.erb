@@ -6,6 +6,11 @@
     <meta charset="utf-8">
     <%= render 'layouts/rails_default' %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
+    <%# CSRF保護を利用するために記述 %>
+    <%= csrf_meta_tags %>
+    <%# Font Awesome kitset %>
+    <script src="https://kit.fontawesome.com/ded0e350fa.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <%= render 'layouts/header' %>
