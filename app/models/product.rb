@@ -20,8 +20,6 @@ class Product
     @product_ids = products.map { |product| product["id"] }.flatten
   end
 
-  
-
   def self.get_shipment
    # 商品IDの配列
    product_ids = @product_ids 
