@@ -12,13 +12,14 @@ class Product
     request['Authorization'] = "Bearer #{ENV['colorme_access_token']}"
     request['Content-Type'] = 'application/json'
     request['scopes'] = 'read_products','write_products'
+    request.set_form_data({ "limit" => "50" })  # limitパラメータを追加
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
       http.request(request)
     end
     json_data = JSON.parse(response.body)
     products = json_data["products"]
     @product_ids = products.map { |product| product["id"] }.flatten
-  end
+  end  
 
   def self.get_shipment
    # 商品IDの配列
@@ -65,7 +66,7 @@ class Product
    product_ids = @product_ids 
    # product_idsがnilである場合、処理を終了する
    return if product_ids.nil?
-   #  商品情報のうち必要な3項目のみを取り出す（商品ID、商品名、在庫数、在庫管理するか否か、オプション設定の有無）
+   #  商品情報のうち必要な5項目のみを取り出す（商品ID、商品名、在庫数、在庫管理するか否か、オプション設定の有無）
    products = {}
    product_ids.each do |product_id|
     url = "https://api.shop-pro.jp/v1/products/#{product_id}.json?fields=id,name,stock_managed,stocks,variants,few_num"
