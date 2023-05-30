@@ -1,11 +1,15 @@
+<%= @products_stocks %>
+
 <div class="row">
 <h1>Stock Trackr</h1>
 <div class="inventory">
 <table>
   <thead>
+  
     <tr>
       <th>商品ID</th>
       <th>商品名</th>
+      <th>掲載状態</th>
       <th>在庫管理</th>
       <th>在庫数</th>
       <th>残りわずか</th>
@@ -18,6 +22,9 @@
       <tr>
         <td><%= value["id"] %></td>
         <td><%= value["name"] %></td>
+        <%# 掲載状態を表示させる %>
+        
+        <th></th>
         <td><%= value["stock_managed"] ? "在庫管理する" : "在庫管理しない" %></td>
           <%# 「在庫管理する」かつ「オプション設定なし」の場合には在庫数を変更できるフォームを表示させる %>
           <% if value["stock_managed"] && !value["variants"].present? %>
