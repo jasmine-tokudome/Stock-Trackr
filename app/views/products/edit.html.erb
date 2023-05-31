@@ -6,9 +6,11 @@
 
 <table>
   <thead>
+  
     <tr>
       <th>商品ID</th>
       <th>商品名</th>
+      <th>掲載状態</th>
       <th>在庫管理</th>
       <th>在庫数</th>
       <th>残りわずか</th>
@@ -21,6 +23,19 @@
       <tr>
         <td><%= value["id"] %></td>
         <td><%= value["name"] %></td>
+        <%# 掲載状態を表示させる %>
+        <% display_state = "showing_for_members" %>  
+          <% if display_state == "showing" %>
+            <td><%= "掲載状態" %></td>
+          <% elsif display_state == "hidden" %>
+            <td><%= "非掲載状態" %></td>
+          <% elsif display_state == "showing_for_members" %>
+            <td><%= "会員にのみ掲載" %></td>
+          <% elsif display_state == "sale_for_members" %>
+            <td><%= "掲載状態だが購入は会員のみ可能" %></td>
+          <% else %>
+            <td><%= "不明な状態" %></td>
+          <% end %>
         <td><%= value["stock_managed"] ? "在庫管理する" : "在庫管理しない" %></td>
           <%# 「在庫管理する」かつ「オプション設定なし」の場合には在庫数を変更できるフォームを表示させる %>
           <% if value["stock_managed"] && !value["variants"].present? %>
