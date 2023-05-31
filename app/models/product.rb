@@ -12,13 +12,14 @@ class Product
     request['Authorization'] = "Bearer #{ENV['colorme_access_token']}"
     request['Content-Type'] = 'application/json'
     request['scopes'] = 'read_products','write_products'
+    request.set_form_data({ "limit" => "50" })  # limitパラメータを追加
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
       http.request(request)
     end
     json_data = JSON.parse(response.body)
     products = json_data["products"]
     @product_ids = products.map { |product| product["id"] }.flatten
-  end
+  end  
 
   def self.get_shipment
    # 商品IDの配列
