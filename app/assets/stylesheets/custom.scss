@@ -257,38 +257,8 @@ input {
 
 /* Inventory Management */
 
-.inventory {
-
-    table {
-        width: 1200px;
-        table-layout: auto;
-    }
-
-    table th {
-        position: relative;
-        text-align: left;
-    }
-
-    table th:after {
-        display: block;
-        content: "";
-        height: 2px;
-        background-color: #354B63;
-        position: absolute;
-        top: calc(50% - 1px);
-        right: -15px;
-    }
-
-    table td {
-        text-align: left;
-        padding: 7px 0 7px 30px;
-    }
-
-}
-
-/* Inventory Management */
-
 .inventory table {
+    table-layout: auto;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
@@ -299,21 +269,27 @@ input {
     }
 
     & th {
-        padding: 20px;
+        padding: 10px;
         text-align: center;
-        width: 9em;
+        width: auto; 
         margin: 0 auto;
         border: solid 1px #ffffff;
         background: #778ca3;
         color: #ffffff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     & td {
         text-align: center;
-        width: 60em;
+        /* width: 60em; */
         margin: 0 auto;
-        padding: 20px;
+        padding: 10px;
         border: solid 1px #ffffff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
 }
@@ -322,4 +298,4 @@ input {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f46c";
-}
+} 
