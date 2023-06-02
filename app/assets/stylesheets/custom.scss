@@ -271,7 +271,6 @@ input {
     & th {
         padding: 10px;
         text-align: center;
-        width: auto; 
         margin: 0 auto;
         border: solid 1px #ffffff;
         background: #778ca3;
@@ -284,6 +283,7 @@ input {
     & td {
         text-align: center;
         /* width: 60em; */
+        width: auto; 
         margin: 0 auto;
         padding: 10px;
         border: solid 1px #ffffff;
