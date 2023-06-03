@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'saless/new'
   root "static_pages#home"
   get 'password_resets/new'
   get 'password_resets/edit'
