@@ -16,7 +16,7 @@ class Sale
            http.request(request)
          end
          json_data = JSON.parse(response.body)
-         sale = json_data["sale"]
+         sales = json_data["sales"]
          sales[sales_id] = sales
          end
          return sales

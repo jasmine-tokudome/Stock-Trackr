@@ -1,8 +1,8 @@
 require "test_helper"
 
-class SalessControllerTest < ActionDispatch::IntegrationTest
+class SalesControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get saless_new_url
+    get sales_new_url
     assert_response :success
   end
 end

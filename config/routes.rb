@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sales/new'
+  get 'sale/new'
   get 'saless/new'
   root "static_pages#home"
   get 'password_resets/new'
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
   delete "/logout",  to: "sessions#destroy"
   get '/products/edit', to: 'products#edit'
   put '/products/edit', to: 'products#update_stocks'
+  get '/sales/new', to: 'sales#new'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
