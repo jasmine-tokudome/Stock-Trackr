@@ -5,21 +5,22 @@ require 'json'
 class Sale
   
   def self.get_sales_ids
-    # 登録されている商品の商品IDを取り出す
+    # 受注IDを取り出す
     url = 'https://api.shop-pro.jp/v1/sales.json'
     uri = URI(url)
     request = Net::HTTP::Get.new(uri)
     request['Authorization'] = "Bearer #{ENV['colorme_access_token']}"
     request['Content-Type'] = 'application/json'
-    request['scopes'] = 'read_products','write_products'
-    request.set_form_data({ "limit" => "50" })  # limitパラメータを追加
+    request['scopes'] = 'read_sales','read_products'
+    request.set_form_data({ "limit" => "100" })  # limitパラメータを追加
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
       http.request(request)
     end
     json_data = JSON.parse(response.body)
     sales = json_data["sales"]
     @sale_ids = sales.map { |sale| sale["id"] }.flatten
-  end  
+    puts @sale_ids 
+  end
 
   def self.get_sales_date
    # 受注IDの配列
