@@ -16,10 +16,16 @@ class Sale
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
       http.request(request)
     end
-    json_data = JSON.parse(response.body)
-    sales = json_data["sales"]
-    @sale_ids = sales.map { |sale| sale["id"] }.flatten
-    puts @sale_ids 
+    # JSONデータの取得（例としてresponse.bodyを使用）
+    json_data = response.body
+    # 前後の空白を削除
+    trimmed_json = json_data.strip
+    # 改行文字を削除
+    normalized_json = trimmed_json.gsub(/\n/, "")
+    # 正規化れたJSONデータをパース
+    json_data = JSON.parse(normalized_json)
+    @sales = json_data["sales"]
+    # @sale_ids = sales.map { |sale| sale["id"] }.flatten
   end
 
   def self.get_sales_date
