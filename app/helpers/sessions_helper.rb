@@ -1,4 +1,6 @@
 module SessionsHelper
+ 
+ 
 
   # 渡されたユーザーでログインする
   def log_in(user)
@@ -14,6 +16,12 @@ module SessionsHelper
     cookies.permanent.encrypted[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
   end
+
+#   current_user　の修正が必要
+#   NoMethodError in StaticPages#home
+# Showing /Users/tokudome/environment/SwitchShip2/app/views/layouts/_header.html.erb where line #17 raised:
+
+# undefined method `session_token' for nil:NilClass
 
   # 現在ログイン中のユーザーを返す（いる場合）
   def current_user
