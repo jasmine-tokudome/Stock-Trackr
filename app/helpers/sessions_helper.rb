@@ -1,7 +1,5 @@
 module SessionsHelper
  
- 
-
   # 渡されたユーザーでログインする
   def log_in(user)
     session[:user_id] = user.id
@@ -17,17 +15,13 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
 
-#   current_user　の修正が必要
-#   NoMethodError in StaticPages#home
-# Showing /Users/tokudome/environment/SwitchShip2/app/views/layouts/_header.html.erb where line #17 raised:
-
-# undefined method `session_token' for nil:NilClass
-
   # 現在ログイン中のユーザーを返す（いる場合）
   def current_user
     if (user_id = session[:user_id])
       user = User.find_by(id: user_id)
-      @current_user ||= user if session[:session_token] == user.session_token
+      if user && session[:session_token] == user.session_token
+        @current_user ||= user
+      end
     elsif (user_id = cookies.encrypted[:user_id])
       user = User.find_by(id: user_id)
       if user && user.authenticated?(:remember, cookies[:remember_token])
