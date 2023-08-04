@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  # get 'sales/new'
-  # get 'sale/new'
-  # get 'sales/new'
   root "static_pages#home"
   get 'password_resets/new'
   get 'password_resets/edit'
