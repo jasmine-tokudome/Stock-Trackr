@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   delete "/logout",  to: "sessions#destroy"
   get '/products/edit', to: 'products#edit'
   put '/products/edit', to: 'products#update_stocks'
-  # get '/sales/new', to: 'sales#new'
+  get '/sales/new', to: 'sales#new'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
